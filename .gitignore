@@ -1,0 +1,27 @@
+# Build
+/build/
+/out/
+*.o
+*.a
+*.so
+
+# Generated BPF
+*.skel.h
+
+# Runtime data
+/runs/
+/data/
+/artifacts/
+
+# Debug
+*.log
+*.trace
+*.jsonl
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Compilation database
+compile_commands.json
