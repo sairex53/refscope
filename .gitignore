@@ -1,27 +1,39 @@
-# Build
+# Build output
 /build/
 /out/
-*.o
-*.a
-*.so
 
-# Generated BPF
-*.skel.h
-
-# Runtime data
+# Runtime data and private captures
 /runs/
 /data/
 /artifacts/
-
-# Debug
 *.log
 *.trace
-*.jsonl
 
-# Editors
+# C, BPF, and kernel module build products
+*.o
+*.a
+*.so
+*.ko
+*.mod
+*.mod.c
+*.mod.o
+.*.cmd
+Module.symvers
+modules.order
+*.skel.h
+vmlinux.h
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Editors and local backups
 .vscode/
 .idea/
 *.swp
-
-# Compilation database
+*.orig
 compile_commands.json
+
+# Local research notes and machine-specific validation diary
+/docs/devlog/
+/proj_organiation.md

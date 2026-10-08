@@ -1,0 +1,57 @@
+{
+  "architecture": "x86_64",
+  "artifacts": {
+    "c_reproducer": "input/repro.c",
+    "config": "input/config",
+    "original_log": "input/report.txt",
+    "syz_reproducer": "input/repro.syz"
+  },
+  "bisection_information": {
+    "cause_commit": "9578e327b2b4935a25d49e3891b8fcca9b6c10c6",
+    "log_absence_reason": "The dashboard identifies a cause commit, but a standalone bisection log was not obtained.",
+    "log_artifact": null
+  },
+  "bug_id": "d47fcea929219ef53b5b0f700f2102bed78b6202",
+  "compiler": "gcc (Debian 12.2.0-14)",
+  "config_provenance": "https://syzkaller.appspot.com/text?tag=KernelConfig&x=55f8591b98dd132",
+  "config_sha256": "d7912a8d6d7ccfb5ef304b7ce495d2b32eff5e4e91f613bd9a4882eadf1fc915",
+  "current_fedora_kernel": {
+    "architecture": "aarch64",
+    "is_report_kernel": false,
+    "release": "7.2.6-200.fc44.aarch64"
+  },
+  "good_bad_comparison": {
+    "bad_source_commit": "adc218676eef25575469234709c2d87185ca223a",
+    "good_source_commit": "75845c6c1a64483e9985302793dbf0dfa5f71e32",
+    "same_architecture_and_config_required": true,
+    "status": "proposed_only_not_run"
+  },
+  "introduced_by": "9578e327b2b4935a25d49e3891b8fcca9b6c10c6",
+  "kernel_build_id": null,
+  "kernel_commit": "adc218676eef25575469234709c2d87185ca223a",
+  "kernel_release": "6.12.0-syzkaller",
+  "kernel_tree": "torvalds/linux (upstream)",
+  "report_html": "input/report.html",
+  "report_url": "https://syzkaller.appspot.com/bug?extid=d47fcea929219ef53b5b0f700f2102bed78b6202",
+  "reproducer_type": [
+    "C",
+    "syzkaller"
+  ],
+  "reproduction_rate": null,
+  "reproduction_status": "not_attempted",
+  "sanitizer_configuration": {
+    "CONFIG_KASAN": "y",
+    "CONFIG_KASAN_GENERIC": "y",
+    "CONFIG_KASAN_INLINE": "y"
+  },
+  "schema_version": 1,
+  "source_manifest": "input/source-manifest.json",
+  "title": "KASAN: slab-use-after-free Read in key_put",
+  "upstream_fix_commit": "75845c6c1a64483e9985302793dbf0dfa5f71e32",
+  "upstream_fix_parent": "88d324e69ea9f3ae1c1905ea75d717c08bdb8e15",
+  "vmlinux_artifact": {
+    "reason": "the report links a vmlinux asset, but this bundle did not download or inspect the ELF",
+    "value": null
+  },
+  "vmlinux_build_id": null
+}

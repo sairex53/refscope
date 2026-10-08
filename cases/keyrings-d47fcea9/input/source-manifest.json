@@ -1,0 +1,95 @@
+{
+  "absent_artifacts": {
+    "bisection_information": {
+      "reason": "the syzbot report identifies this cause commit; no separate bisection log artifact was downloaded",
+      "value": "9578e327b2b4935a25d49e3891b8fcca9b6c10c6"
+    },
+    "bisection_log": {
+      "reason": "not copied; report provides the cause commit and dashboard link, but no separate local bisection artifact was requested or downloaded",
+      "value": null
+    },
+    "matching_vmlinux": {
+      "reason": "a vmlinux link exists on the report but no binary was downloaded; this bundle limits itself to the requested text/reproducer/config inputs",
+      "value": null
+    }
+  },
+  "artifacts": [
+    {
+      "path": "input/report.html",
+      "retrieved_at_utc": "2026-10-07T16:02:52+00:00",
+      "sha256": "e2ff65cfd5e30ba0555b943aaa38777c4da7e6c544f9f625f9a5475ffa937636",
+      "size_bytes": 50737,
+      "status": "downloaded_from_public_syzbot",
+      "url": "https://syzkaller.appspot.com/bug?extid=d47fcea929219ef53b5b0f700f2102bed78b6202"
+    },
+    {
+      "path": "input/report.txt",
+      "retrieved_at_utc": "2026-10-07T16:02:52+00:00",
+      "sha256": "d5a0eccef90d43c89d89ee3239e5f448948c0cabad564b614ad9ecd1d21f1b58",
+      "size_bytes": 6963,
+      "status": "downloaded_from_public_syzbot",
+      "url": "https://syzkaller.appspot.com/text?tag=CrashReport&x=11e46ac0580000"
+    },
+    {
+      "path": "input/repro.c",
+      "retrieved_at_utc": "2026-10-07T16:02:52+00:00",
+      "sha256": "ea8379376c866be221c898e62724185f8c71627ebe6acb423795781ab2a26032",
+      "size_bytes": 9247,
+      "status": "downloaded_from_public_syzbot",
+      "url": "https://syzkaller.appspot.com/text?tag=ReproC&x=11c672e8580000"
+    },
+    {
+      "path": "input/repro.syz",
+      "retrieved_at_utc": "2026-10-07T16:02:52+00:00",
+      "sha256": "812c944da5ac3adee90457e06d8fa05f85c470638d0440dfc24f5f89baa28af7",
+      "size_bytes": 1068,
+      "status": "downloaded_from_public_syzbot",
+      "url": "https://syzkaller.appspot.com/text?tag=ReproSyz&x=12dbbb5f980000"
+    },
+    {
+      "path": "input/config",
+      "retrieved_at_utc": "2026-10-07T16:02:52+00:00",
+      "sha256": "d7912a8d6d7ccfb5ef304b7ce495d2b32eff5e4e91f613bd9a4882eadf1fc915",
+      "size_bytes": 263917,
+      "status": "downloaded_from_public_syzbot",
+      "url": "https://syzkaller.appspot.com/text?tag=KernelConfig&x=55f8591b98dd132"
+    }
+  ],
+  "bug_id": "d47fcea929219ef53b5b0f700f2102bed78b6202",
+  "case_id": "keyrings-d47fcea9",
+  "fix_review": {
+    "files": [
+      "include/linux/key.h",
+      "security/keys/gc.c",
+      "security/keys/key.c"
+    ],
+    "functions_or_data": [
+      "struct key flags",
+      "key_put",
+      "key_garbage_collector"
+    ],
+    "meaning": "sets KEY_FLAG_FINAL_PUT before scheduling GC and makes the collector use the flag instead of rereading the zero reference count; addresses the post-final-put key use-after-free described by the report"
+  },
+  "kernel": {
+    "affected_commit": "adc218676eef25575469234709c2d87185ca223a",
+    "affected_commit_api": "https://api.github.com/repos/torvalds/linux/commits/adc218676eef25575469234709c2d87185ca223a",
+    "affected_commit_source": "syzbot crash row 2024-11-18 16:26; full object verified via GitHub torvalds/linux commit API",
+    "ancestry_check": "GitHub compare API reports affected commit is an ancestor of the fix parent (status ahead, behind=0).",
+    "fix_commit": "75845c6c1a64483e9985302793dbf0dfa5f71e32",
+    "fix_commit_api": "https://api.github.com/repos/torvalds/linux/commits/75845c6c1a64483e9985302793dbf0dfa5f71e32",
+    "fix_parent": "88d324e69ea9f3ae1c1905ea75d717c08bdb8e15",
+    "fix_patch": "https://github.com/torvalds/linux/commit/75845c6c1a64483e9985302793dbf0dfa5f71e32.patch",
+    "tree": "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+  },
+  "report_provenance": {
+    "architecture": "x86_64",
+    "compiler": "gcc (Debian 12.2.0-14)",
+    "config_provenance": "syzkaller KernelConfig artifact linked from the same crash row; Linux/x86_64 6.12.0 config; CONFIG_CC_VERSION_TEXT agrees with report metadata",
+    "kernel_release": "6.12.0-syzkaller",
+    "reproducer_provenance": "C and syz artifacts linked from the same syzbot bug/report; originals preserved byte-for-byte",
+    "snapshot_date": "2024-11-18 16:26 UTC"
+  },
+  "report_url": "https://syzkaller.appspot.com/bug?extid=d47fcea929219ef53b5b0f700f2102bed78b6202",
+  "retrieved_at_utc": "2026-10-07T16:02:52+00:00",
+  "schema_version": 1
+}
