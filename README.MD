@@ -44,6 +44,18 @@ From the repository root:
 
 The build writes generated files to build/. The test suite exercises the CLI, JSON output, source lookup fallback, timeline and bundle logic, target inspection, provenance adapters, diagnosis rules, and syzbot intake.
 
+## Development storage
+
+Inspect project, retained run evidence, backups, shared container storage, and installed build-tool package sizes:
+
+    make storage
+
+Preview the only automatic cleanup candidates (the repository-local build output and Python bytecode caches):
+
+    make storage-clean
+
+To apply that cleanup, run `./scripts/dev-storage.sh clean-rebuildables --apply` interactively and type the confirmation phrase shown by the script. It refuses non-interactive confirmation and does not remove source, Git data, case bundles, saved evidence, backups, packages, containers, or sibling projects. See [docs/development-storage.md](docs/development-storage.md) for ownership and retention rules.
+
 The trace operation normally requires root and a kernel with the required BPF tracing support. Start with a dry run to check a target:
 
     sudo ./build/refscope trace --get 'foo_get:obj=arg0' --put 'foo_put:obj=arg0' --dry-run

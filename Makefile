@@ -17,7 +17,7 @@ CPPFLAGS += -DRS_HAVE_LIBDW $(shell pkg-config --cflags libdw)
 DWARF_LIBS := $(shell pkg-config --libs libdw)
 endif
 WARN := -Wall -Wextra -Werror
-.PHONY: all clean test module module-btf faults FORCE
+.PHONY: all clean test module module-btf faults storage storage-clean FORCE
 all: build/refscope
 build:
 	mkdir -p $@
@@ -59,6 +59,7 @@ test: build/test-target build/test-json build/refscope
 	python3 tests/test_diagnosis_cli.py
 	python3 tests/test_diagnosis_synthetic_accuracy.py
 	python3 tests/test_syzbot_intake.py
+	python3 tests/test_storage.py
 module:
 	$(MAKE) -C /lib/modules/$(shell uname -r)/build M=$(CURDIR)/tests/synthetic modules
 clean:
@@ -68,6 +69,10 @@ clean:
 module-btf: module
 	pahole -J --btf_base /sys/kernel/btf/vmlinux tests/synthetic/refscope_test.ko
 
+storage:
+	./scripts/dev-storage.sh inventory
+storage-clean:
+	./scripts/dev-storage.sh clean-rebuildables
 FORCE:
 build/config: FORCE | build
 	@printf "%s\n" "$(WITH_DWARF) $(HOST_ARCH) $(CFLAGS)" > $@.tmp
