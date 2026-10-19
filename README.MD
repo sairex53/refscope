@@ -124,3 +124,9 @@ tests/synthetic/ provides a development fixture for a disposable VM or test mach
 ## Limitations
 
 RefScope does not automatically discover every reference operation, prove ownership, infer the actual kernel reference count from GET/PUT events, or provide a verified root cause for a real kernel bug. It has not completed validation against a reproducible known real-subsystem divergence. Use its reports as investigation aids and verify every proposed explanation against source and controlled runs.
+
+
+## License
+
+RefScope is licensed under the MIT License.
+See [LICENSE](LICENSE) for details.
